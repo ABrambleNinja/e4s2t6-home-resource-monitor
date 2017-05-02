@@ -82,16 +82,16 @@ def windowInfoDisplay():
     textA = ""
     if math.fabs(tempInside()-currentTempOut)<2:
         if AC:
-            textA = "Your AC is on when it can be turned off"
+            textA = "Your AC is on when it can be turned off because the temperature inside (" + (str)(tempInside()) + ") and ouside (" + (str)(currentTempOut) +") are the same"
         else:
             if not door():
-                textA = "Your window is closed when the temperature inside and ouside are the same. You can open your window"
+                textA = "Your window is closed when the temperature inside (" + (str)(tempInside()) + ") and ouside (" + (str)(currentTempOut) +") are the same. You can open your window"
     else:
         if AC:
             if door():
-                textA = "Your AC is on when the window is open. Please close the window."
+                textA = "Your AC is on when the window is open. Please close the window. The temperature inside is " + (str)(tempInside()) + " and ouside is (" + (str)(currentTempOut) +"."
     if textA == "":
-        textA = "You're monitoring your AC usage well. Keep up the good work!"
+        textA = "You're monitoring your AC usage well. Keep up the good work! The temperature inside is " + (str)(tempInside()) + " and ouside is " + (str)(currentTempOut) +"."
     return wrap(textA)
 
 def door():
