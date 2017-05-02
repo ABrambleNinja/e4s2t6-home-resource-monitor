@@ -95,13 +95,11 @@ def door():
     # pin is 21
     global currentState
     if (GPIO.input(21) == False and currentState==True):
-        text.Clear()
         currentState = False
         #we don't do anything
     elif(GPIO.input(21) == True and currentState==False):
         #the door is open if we have reached here,
         #so we should send a value to Adafruit IO.
-        text.Clear()
         currentState = True
     time.sleep(.1)
     return currentState
@@ -322,9 +320,9 @@ def main():
                     count = count-1
             else:
                 page = page-1
-            text.Clear()
             count = (count%11)
-            text.AddText(str(methods1[count]()[page]))
+            text.UpdateText("Main", str(methods1[count]()[page]))
+            #text.AddText(str(methods1[count]()[page]))
             #write_text(papirus, methods1[count][page], SIZE)
         elif GPIO.input(SW2) == False:
             if page == len(methods1[count]())-1:
@@ -333,7 +331,7 @@ def main():
             else:
                 page = page+1
             count = (count%11)
-            text.AddText(str(methods1[count]()[page]))
+            text.UpdateText("Main", str(methods1[count]()[page]))
             #write_text(papirus, methods1[count][page], SIZE)
         else:
             if count == 10:
