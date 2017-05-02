@@ -68,7 +68,8 @@ SW3 = 20
 AC = True
 
 def checkAC():
-    global AC = True
+    global AC
+    AC = True
 
 def main():
     global SIZE
