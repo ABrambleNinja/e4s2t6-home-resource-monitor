@@ -185,6 +185,7 @@ def fifth():
 def sixth():
     global userMonthElectricBtu
     global avgMonthEletricBtu
+    global electricScore
     textA = ""
     if userMonthElectricBtu > avgMonthEletricBtu:
         textA = "Over the average electric usage by " + str(round(abs((userMonthElectricBtu-avgMonthEletricBtu)/avgMonthEletricBtu)*100,2)) + " percent"
@@ -322,7 +323,7 @@ def main():
                 else:
                     page = page-1
             text.Clear()
-            text.AddText(str(methods1[count]()[page]), 10, 10, Id = "Start")
+            text.AddText(str(methods1[count]()[page]))
             #write_text(papirus, methods1[count][page], SIZE)
         elif GPIO.input(SW3) == False:
             if page == len(methods1[count])-1:
@@ -331,7 +332,7 @@ def main():
             else:
                 page = page+1
             text.Clear()
-            text.AddText(str(methods1[count]()[page]), 10, 10, Id = "Start")
+            text.AddText(str(methods1[count]()[page]))
             #write_text(papirus, methods1[count][page], SIZE)
         sleep(0.1)
 
