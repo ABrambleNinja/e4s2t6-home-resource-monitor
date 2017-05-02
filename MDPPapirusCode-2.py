@@ -67,7 +67,7 @@ SW2 = 26
 SW3 = 20
 AC = True
 
-def checkAC()
+def checkAC():
     global AC = True
 
 def main():
@@ -276,7 +276,7 @@ def tenth():
 
 def eleventh():
     return windowInfoDisplay()
-    
+
 def genSuggestions(water, electricity, gas):
     displayBuffer = ""
     if water > 0:
