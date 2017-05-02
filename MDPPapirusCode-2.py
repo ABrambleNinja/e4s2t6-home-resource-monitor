@@ -72,40 +72,6 @@ def checkAC():
     global AC
     AC = True
 
-def write_text(papirus, text, size):
-
-    # initially set all white background
-    image = Image.new('1', papirus.size, WHITE)
-
-    # prepare for drawing
-    draw = ImageDraw.Draw(image)
-
-    font = ImageFont.truetype('/usr/share/fonts/truetype/freefont/FreeMonoBold.ttf', size)
-
-    # Calculate the max number of char to fit on line
-    line_size = (papirus.width / (size*0.65))
-
-    current_line = 0
-    text_lines = [""]
-
-    # Compute each line
-    for word in text.split():
-        # If there is space on line add the word to it
-        if (len(text_lines[current_line]) + len(word)) < line_size:
-            text_lines[current_line] += " " + word
-        else:
-            # No space left on line so move to next one
-            text_lines.append("")
-            current_line += 1
-            text_lines[current_line] += " " + word
-
-    current_line = 0
-    for l in text_lines:
-        current_line += 1
-        draw.text( (0, ((size*current_line)-size)) , l, font=font, fill=BLACK)
-
-    papirus.display(image)
-    papirus.partial_update()
 
 def windowInfoDisplay():
     textA = ""
@@ -128,14 +94,12 @@ def door():
     global currentState
     if (GPIO.input(21) == False and currentState==True):
         text.Clear()
-        text.AddText("Window is closed" , 10, 10, Id = "Closed")
         currentState = False
         #we don't do anything
     elif(GPIO.input(21) == True and currentState==False):
         #the door is open if we have reached here,
         #so we should send a value to Adafruit IO.
         text.Clear()
-        text.AddText("Window is open" , 10, 10, Id = "Open")
         currentState = True
     time.sleep(.1)
 
@@ -147,7 +111,6 @@ def tempOutside():
     weather = json.loads(meteo)
     cur_temp =weather['current_observation']['temperature_string'].split()
     tempOut= cur_temp[0]
-    text.AddText(tempOut , 10, 10, Id = "Label")
     return (float)(tempOut)
 
 def tempInside():
@@ -257,6 +220,7 @@ def eighth():
 def ninth():
     global userMonthGasBtu
     global avgMonthGasBtu
+    global gasScore
     textA = ""
     if userMonthGasBtu > avgMonthGasBtu:
         textA = "Over the average gas usageby " + str(round(abs((userMonthGasBtu-avgMonthGasBtu)/avgMonthGasBtu)*100,2)) + " percent"
@@ -349,7 +313,6 @@ def main():
         SIZE = 18
     while True:
         if GPIO.input(SW2) == False:
-            write_text(papirus, "Two", SIZE)
             if page ==0:
                     count = count-1
             else:
