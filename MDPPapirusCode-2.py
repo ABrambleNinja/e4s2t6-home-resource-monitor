@@ -314,7 +314,7 @@ def main():
     if papirus.height <= 96:
         SIZE = 18
     while True:
-        if GPIO.input(SW2) == False:
+        if GPIO.input(SW3) == False:
             if page ==0:
                     count = count-1
             else:
@@ -326,9 +326,9 @@ def main():
             text.Clear()
             count = count%11-1
             text.AddText(str(methods1[count]()[page]))
-            print(methods1[count])
+            print(methods1[count]())
             #write_text(papirus, methods1[count][page], SIZE)
-        elif GPIO.input(SW3) == False:
+        elif GPIO.input(SW2) == False:
             if page == len(methods1[count]())-1:
                 page = 0
                 count = count + 1
