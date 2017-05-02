@@ -140,7 +140,7 @@ def second():
         textA = "Over last month's water usage by " + (str)(round(abs((lastMonthGallons-userMonthGallons)/lastMonthGallons)*100,2)) + " pecent"
         waterScore -= 1
     elif userMonthGallons<lastMonthGallons:
-        textA = "Under last month's water usage by " + (str)(round(fabs((lastMonthGallons-userMonthGallons)/lastMonthGallons)*100,2)) + " percent"
+        textA = "Under last month's water usage by " + (str)(round(abs((lastMonthGallons-userMonthGallons)/lastMonthGallons)*100,2)) + " percent"
         waterScore += 1
     else:
         textA = "Same amount as last month's water usage"
