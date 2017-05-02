@@ -80,7 +80,7 @@ def checkAC():
 
 def windowInfoDisplay():
     textA = ""
-    if math.fabs(tempInside()-tempOutside())<2:
+    if math.fabs(tempInside()-currentTempOut)<2:
         if AC:
             textA = "Your AC is on when it can be turned off"
         else:
