@@ -335,7 +335,12 @@ def main():
             text.AddText(str(methods1[count]()[page]))
             print(methods1[count]())
             #write_text(papirus, methods1[count][page], SIZE)
+        else:
+            if count == 10:
+                text.Clear()
+                text.AddText(str(methods1[count]()[page]))
         sleep(0.1)
+        
 
 if __name__ == '__main__':
     main()
