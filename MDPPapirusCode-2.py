@@ -80,7 +80,7 @@ def checkAC():
 
 def windowInfoDisplay():
     textA = ""
-    if math.fabs(tempInside()-tempOutside())<2:
+    if math.fabs(tempInside()-currentTempOut)<2:
         if AC:
             textA = "Your AC is on when it can be turned off"
         else:
@@ -327,6 +327,7 @@ def main():
             else:
                 page = page-1
             count = (count%11)
+            text.Clear()
             text.AddText(str(methods1[count]()[page]))
         elif GPIO.input(SW2) == False:
             if page == len(methods1[count]())-1:
@@ -335,9 +336,11 @@ def main():
             else:
                 page = page+1
             count = (count%11)
+            text.Clear()
             text.AddText(str(methods1[count]()[page]))
         else:
             if count == 10:
+                text.Clear()
                 text.AddText(str(methods1[count]()[page]))
                 sleep(.5)
         sleep(0.1)
