@@ -137,11 +137,11 @@ def second():
     global waterScore
     textA = ""
     if userMonthGallons > lastMonthGallons:
-        textA = "Over last month's water usage by " + str(round(abs((lastMonthGallons-userMonthGallons)/lastMonthGallons)*100,2)) + " pecent"
+        textA = "Over last month's water usage by " + (str)(math.round(math.fabs((lastMonthGallons-userMonthGallons)/lastMonthGallons)*100,2)) + " pecent"
         waterScore -= 1
     elif userMonthGallons<lastMonthGallons:
         textA = "Under last month's water usage by "
-        + str(round(abs((lastMonthGallons-userMonthGallons)/lastMonthGallons)*100,2)) + " percent"
+        + (str)(math.round(math.fabs((lastMonthGallons-userMonthGallons)/lastMonthGallons)*100,2)) + " percent"
         waterScore += 1
     else:
         textA = "Same amount as last month's water usage"
@@ -153,10 +153,10 @@ def third():
     global waterScore
     textA = ""
     if userMonthGallons > avgMonthGallons:
-        textA = "Over the average water usage by "+ str(round(abs((userMonthGallons-avgMonthGallons)/avgMonthGallons)*100,2)) + " percent"
+        textA = "Over the average water usage by "+ str(math.round(abs((userMonthGallons-avgMonthGallons)/avgMonthGallons)*100,2)) + " percent"
         waterScore -= 1
     elif userMonthGallons < avgMonthGallons:
-        textA = "Under the average water usage by " + str(round(abs((userMonthGallons-avgMonthGallons)/avgMonthGallons)*100,2)) + " percent"
+        textA = "Under the average water usage by " + str(math.round(abs((userMonthGallons-avgMonthGallons)/avgMonthGallons)*100,2)) + " percent"
         waterScore += 1
     else:
         textA = "Same amount as average water usage"
