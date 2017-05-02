@@ -357,7 +357,7 @@ def main():
                     page = 0
                 else:
                     page = page-1
-            text.clear()
+            text.Clear()
             text.AddText(str(methods1[count][page]), 10, 10, Id = "Start")
             #write_text(papirus, methods1[count][page], SIZE)
         elif GPIO.input(SW3) == False:
@@ -366,7 +366,7 @@ def main():
                 count = count + 1
             else:
                 page = page+1
-            text.clear()
+            text.Clear()
             text.AddText(str(methods1[count][page]), 10, 10, Id = "Start")
             #write_text(papirus, methods1[count][page], SIZE)
         sleep(0.1)
