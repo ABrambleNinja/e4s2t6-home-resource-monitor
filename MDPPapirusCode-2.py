@@ -102,6 +102,7 @@ def door():
         text.Clear()
         currentState = True
     time.sleep(.1)
+    return currentState
 
 def tempOutside():
     apikey= '06e1dbcfafa9653b'
