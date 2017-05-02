@@ -333,14 +333,12 @@ def main():
                 count = count + 1
             else:
                 page = page+1
-            text.Clear()
             count = (count%11)
             text.UpdateText("Main", str(methods1[count]()[page]))
             print(methods1[count]())
             #write_text(papirus, methods1[count][page], SIZE)
         else:
             if count == 10:
-                text.Clear()
                 text.UpdateText("Main", str(methods1[count]()[page]))
         sleep(0.1)
         
