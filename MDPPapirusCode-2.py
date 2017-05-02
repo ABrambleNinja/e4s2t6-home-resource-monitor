@@ -9,6 +9,7 @@ import time
 from urllib import urlopen
 import json
 import math
+import thread
 
 screen = Papirus()
 text = PapirusTextPos()
@@ -25,6 +26,8 @@ lastMonthGasBtu = 5100000.000
 waterScore = 0
 electricScore = 0
 gasScore = 0
+
+currentTempOut = 0
 
 GPIO.setmode(GPIO.BCM)
 chan_list = [21, 16,26,20]
@@ -105,14 +108,17 @@ def door():
     return currentState
 
 def tempOutside():
+    global currentTempOut
     apikey= '06e1dbcfafa9653b'
     url="http://api.wunderground.com/api/"+apikey+"/conditions/q/USA/CA/Claremont.json"
     meteo=urlopen(url).read()
     meteo = meteo.decode('utf-8')
     weather = json.loads(meteo)
     cur_temp =weather['current_observation']['temperature_string'].split()
-    tempOut= cur_temp[0]
-    return (float)(tempOut)
+    currentTempOut = (float)(cur_temp[0])
+    sleep(60*3)
+
+thread.start_new_thread(tempOutside, ())
 
 def tempInside():
     #reading = GPIO.input(16)
