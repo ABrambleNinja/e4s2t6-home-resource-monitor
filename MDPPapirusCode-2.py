@@ -106,9 +106,6 @@ def write_text(papirus, text, size):
     papirus.display(image)
     papirus.partial_update()
 
-if __name__ == '__main__':
-    main()
-
 def windowInfoDisplay():
     textA = ""
     if math.fabs(tempInside()-tempOutside())<2:
@@ -369,3 +366,6 @@ def main():
                 page = page+1
             write_text(papirus, methods1[count][page], SIZE)
         sleep(0.1)
+
+if __name__ == '__main__':
+    main()
