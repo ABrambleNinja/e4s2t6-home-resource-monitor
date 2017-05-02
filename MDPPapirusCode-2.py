@@ -150,6 +150,7 @@ def second():
 def third():
     global userMonthGallons
     global avgMonthGallons
+    global waterScore
     textA = ""
     if userMonthGallons > avgMonthGallons:
         textA = "Over the average water usage by "+ str(round(abs((userMonthGallons-avgMonthGallons)/avgMonthGallons)*100,2)) + " percent"
@@ -224,7 +225,7 @@ def ninth():
     global gasScore
     textA = ""
     if userMonthGasBtu > avgMonthGasBtu:
-        textA = "Over the average gas usageby " + str(round(abs((userMonthGasBtu-avgMonthGasBtu)/avgMonthGasBtu)*100,2)) + " percent"
+        textA = "Over the average gas usage by " + str(round(abs((userMonthGasBtu-avgMonthGasBtu)/avgMonthGasBtu)*100,2)) + " percent"
         gasScore -= 1
     elif userMonthGasBtu < avgMonthGasBtu:
         textA = "Under the average gas usage by" + str(round(abs((userMonthGasBtu-avgMonthGasBtu)/avgMonthGasBtu)*100,2)) + "percent"
@@ -323,7 +324,9 @@ def main():
                 else:
                     page = page-1
             text.Clear()
+            count = count%11-1
             text.AddText(str(methods1[count]()[page]))
+            print(methods1[count])
             #write_text(papirus, methods1[count][page], SIZE)
         elif GPIO.input(SW3) == False:
             if page == len(methods1[count])-1:
@@ -332,7 +335,9 @@ def main():
             else:
                 page = page+1
             text.Clear()
+            count = count%11-1
             text.AddText(str(methods1[count]()[page]))
+            print(methods1[count])
             #write_text(papirus, methods1[count][page], SIZE)
         sleep(0.1)
 
