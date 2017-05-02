@@ -320,7 +320,7 @@ def main():
             else:
                 page = page-1
             text.Clear()
-            count = count%11-1
+            count = (count%11)
             text.AddText(str([methods1[count]()][page]))
             print(methods1[count]())
             #write_text(papirus, methods1[count][page], SIZE)
@@ -331,7 +331,7 @@ def main():
             else:
                 page = page+1
             text.Clear()
-            count = count%11-1
+            count = (count%11)
             text.AddText(str([methods1[count]()][page]))
             print(methods1[count]())
             #write_text(papirus, methods1[count][page], SIZE)
