@@ -24,7 +24,7 @@ electricScore = 0
 gasScore = 0
 
 GPIO.setmode(GPIO.BCM)
-chan_list = [21, 16,26,20]# add as many channels as you want!#you can tuples instead i.e.: #chan_list = (11, 12)
+chan_list = [21, 16,26,20]
 GPIO.setup(chan_list, GPIO.IN)
 currentState = True
 
@@ -124,16 +124,20 @@ if __name__ == '__main__':
     main()
 
 def windowInfoDisplay():
+    textA = ""
     if math.fabs(tempInside()-tempOutside())<2:
         if AC:
-            text.AddText("Your AC is on when it can be turned off" , 10, 10, Id = "Bad")
+            textA = "Your AC is on when it can be turned off"
         else:
             if not door():
-                text.AddText("Your window is closed when the temperature inside and ouside are the same. You can open your window" , 10, 10, Id = "Bad")
+                textA = "Your window is closed when the temperature inside and ouside are the same. You can open your window"
     else:
         if AC:
             if door():
-                text.AddText("Your AC is on when the window is open. Please close the window." , 10, 10, Id = "Bad")
+                textA = "Your AC is on when the window is open. Please close the window."
+    if textA == "":
+        textA = "You're monitoring your AC usage well. Keep up the good work!"
+    return wrap(textA)
 
 def door():
     # pin is 21
@@ -174,77 +178,105 @@ def tempInside():
     return (float)(temperatureF)
 
 def first(userMonthGallons):
-    text.AddText("Your monthly water usage is " + str(userMonthGallons) + " gallons", 10, 10, Id = "Start")
+    textA = ""
+    textA = "Your monthly water usage is " + str(userMonthGallons) + " gallons"
+    return wrap(textA)
 
 def second(userMonthGallons, lastMonthGallons):
     global waterScore
+    textA = ""
     if userMonthGallons > lastMonthGallons:
-        text.AddText("Over last month's water usage by "
-        + str(round(abs((lastMonthGallons-userMonthGallons)/lastMonthGallons)*100,2)) + " pecent", 10, 10, Id= "Water2")
+        textA = "Over last month's water usage by " + str(round(abs((lastMonthGallons-userMonthGallons)/lastMonthGallons)*100,2)) + " pecent"
         waterScore -= 1
     elif userMonthGallons<lastMonthGallons:
-        text.AddText("Under last month's water usage by "
-        + str(round(abs((lastMonthGallons-userMonthGallons)/lastMonthGallons)*100,2)) + " percent", 10, 10, Id= "Water2")
+        textA = "Under last month's water usage by "
+        + str(round(abs((lastMonthGallons-userMonthGallons)/lastMonthGallons)*100,2)) + " percent"
         waterScore += 1
+    else:
+        textA = "Same amount as last month's water usage"
+    return wrap(textA)
 
 def third(userMonthGallons, avgMonthGallons):
+    textA = ""
     if userMonthGallons > avgMonthGallons:
-        text.AddText("Over the average water usage by "
-        + str(round(abs((userMonthGallons-avgMonthGallons)/avgMonthGallons)*100,2)) + " percent", 10, 10, Id= "Water3")
+        textA = "Over the average water usage by "+ str(round(abs((userMonthGallons-avgMonthGallons)/avgMonthGallons)*100,2)) + " percent"
         waterScore -= 1
     elif userMonthGallons < avgMonthGallons:
-        text.AddText("Under the average water usage by "
-        + str(round(abs((userMonthGallons-avgMonthGallons)/avgMonthGallons)*100,2)) + " percent", 10, 10, Id = "Water3")
+        textA = "Under the average water usage by " + str(round(abs((userMonthGallons-avgMonthGallons)/avgMonthGallons)*100,2)) + " percent"
         waterScore += 1
+    else:
+        textA = "Same amount as average water usage"
+    return wrap(textA)
+
 
 def fourth(userMonthElectricBtu):
-    text.AddText("Your monthly electric usage is " + str(userMonthElectricBtu) + " electric British thermal units", 10, 10, Id = "Start1")
+    textA = ""
+    textA = "Your monthly electric usage is " + str(userMonthElectricBtu) + " electric British thermal units"
+    return wrap(textA)
 
 def fifth(userMonthElectricBtu, lastMonthElectricBtu):
     global electricScore
+    textA = ""
     if userMonthElectricBtu > lastMonthElectricBtu:
-        text.AddText("Over last month's electric usage by "
-        + str(round(abs((lastMonthElectricBtu-userMonthElectricBtu)/lastMonthElectricBtu)*100,2)) + " pecent", 10, 10, Id= "Electric2")
-        electricScore -= 1
+        textA = "Over last month's electric usage by "+ str(round(abs((lastMonthElectricBtu-userMonthElectricBtu)/lastMonthElectricBtu)*100,2)) + " pecent"
     elif userMonthElectricBtu<lastMonthElectricBtu:
-        text.AddText("Under last month's electric usage by "
-        + str(round(abs((lastMonthElectricBtu-userMonthElectricBtu)/lastMonthElectricBtu)*100,2)) + " percent", 10, 10, Id= "Electric2")
+        textA = "Under last month's electric usage by "+ str(round(abs((lastMonthElectricBtu-userMonthElectricBtu)/lastMonthElectricBtu)*100,2)) + " percent"
         electricScore += 1
+    else:
+        textA = "Same electricty usage as last month"
+    return wrap(textA)
 
 def sixth(userMonthElectricBtu, avgMonthEletricBtu):
+    textA = ""
     if userMonthElectricBtu > avgMonthEletricBtu:
-        text.AddText("Over the average electric usage by "
-        + str(round(abs((userMonthElectricBtu-avgMonthEletricBtu)/avgMonthEletricBtu)*100,2)) + " percent", 10, 10, Id= "Electric3")
+        textA = "Over the average electric usage by " + str(round(abs((userMonthElectricBtu-avgMonthEletricBtu)/avgMonthEletricBtu)*100,2)) + " percent"
         electricScore -= 1
     elif userMonthElectricBtu < avgMonthEletricBtu:
-        text.AddText("Under the average electric usage by "
-        + str(round(abs((userMonthElectricBtu-avgMonthEletricBtu)/avgMonthEletricBtu)*100,2)) + " percent", 10, 10, Id = "Electric3")
+        textA = "Under the average electric usage by "+ str(round(abs((userMonthElectricBtu-avgMonthEletricBtu)/avgMonthEletricBtu)*100,2)) + " percent"
         electricScore += 1 
+    else:
+        textA = "Same electrvity usage as the average"
+    return wrap(textA)
 
 def seventh(userMonthGasBtu):
-    text.AddText("Your monthly gas usage is " + str(userMonthGasBtu) + " gas British thermal units", 10, 10, Id = "Start2")
+    textA = ""
+    textA = "Your monthly gas usage is " + str(userMonthGasBtu) + " gas British thermal units"
+    return wrap(textA)
 
 def eighth(userMonthGasBtu, lastMonthGasBtu):
     global gasScore
+    textA = ""
     if userMonthGasBtu > lastMonthGasBtu:
-        text.AddText("Over last month's gas usage by "
-        + str(round(abs((lastMonthGasBtu-userMonthGasBtu)/lastMonthGasBtu)*100,2)) + " pecent", 10, 10, Id= "Gas2")
+        textA = "Over last month's gas usage by " + str(round(abs((lastMonthGasBtu-userMonthGasBtu)/lastMonthGasBtu)*100,2)) + " pecent"
         gasScore -= 1
     elif userMonthGasBtu<lastMonthGasBtu:
-        text.AddText("Under last month's gas usage by "
-        + str(round(abs((lastMonthGasBtu-userMonthGasBtu)/lastMonthGasBtu)*100,2)) + " percent", 10, 10, Id= "Gas2")
+        textA = "Under last month's gas usage by " + str(round(abs((lastMonthGasBtu-userMonthGasBtu)/lastMonthGasBtu)*100,2)) + " percent"
         gasScore += 1
+    else:
+        textA = "Same gas usage as last month"
+    return wrap(textA)
 
 def ninth(userMonthGasBtu, avgMonthGasBtu):
+    textA = ""
     if userMonthGasBtu > avgMonthGasBtu:
-        text.AddText("Over the average gas usageby "
-        + str(round(abs((userMonthGasBtu-avgMonthGasBtu)/avgMonthGasBtu)*100,2)) + " percent", 10, 10, Id= "Gas3")
+        textA = "Over the average gas usageby " + str(round(abs((userMonthGasBtu-avgMonthGasBtu)/avgMonthGasBtu)*100,2)) + " percent"
         gasScore -= 1
     elif userMonthGasBtu < avgMonthGasBtu:
-        text.AddText("Under the average gas usage by"
-        + str(round(abs((userMonthGasBtu-avgMonthGasBtu)/avgMonthGasBtu)*100,2)) + "percent", 10, 10, Id = "Gas3")
+        textA = "Under the average gas usage by" + str(round(abs((userMonthGasBtu-avgMonthGasBtu)/avgMonthGasBtu)*100,2)) + "percent"
         gasScore += 1
+    else:
+        textA = "Same amount as average gas usage"
+    return wrap(textA)
 
+def tenth():
+    global waterScore
+    global electricScore
+    global gasScore
+    return genSuggestions(waterScore, electricScore,gasScore)
+
+def eleventh():
+    return windowInfoDisplay()
+    
 def genSuggestions(water, electricity, gas):
     displayBuffer = ""
     if water > 0:
@@ -267,8 +299,8 @@ def genSuggestions(water, electricity, gas):
         displayBuffer += "Youre doing ok on gas... Consider using colder water in showers and to wash dishes." + "\n"
     elif gas < 0:
         displayBuffer += "You could use some improvement on gas usage. Make sure to turn off the stove when youre done cooking! Use colder water in showers and to wash dishes/clothes." + "\n"
-
-    text.AddText(displayBuffer)
+    
+    return wrap(displayBuffer)
 
 def getWords(text):
     counter = 0
