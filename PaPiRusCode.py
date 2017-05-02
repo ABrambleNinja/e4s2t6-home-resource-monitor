@@ -89,7 +89,7 @@ def windowInfoDisplay():
     else:
         if AC:
             if door():
-                textA = "Your AC is on when the window is open. Please close the window. The temperature inside is " + (str)(tempInside()) + " and ouside is (" + (str)(currentTempOut) +"."
+                textA = "Your AC is on when the window is open. Please close the window. The temperature inside is " + (str)(tempInside()) + " and ouside is " + (str)(currentTempOut) +"."
     if textA == "":
         textA = "You're monitoring your AC usage well. Keep up the good work! The temperature inside is " + (str)(tempInside()) + " and ouside is " + (str)(currentTempOut) +"."
     return wrap(textA)
