@@ -297,7 +297,7 @@ def wrap(text):
     pageBuffer = []
     for i in range(len(lines)):
         pageBuffer.append(lines[i])
-        if i % 10 == 9:
+        if i % 8 == 0 and i !=0:
             pages.append("\n".join(pageBuffer))
             pageBuffer = []
     pages.append("\n".join(pageBuffer))
