@@ -41,6 +41,7 @@ from PIL import ImageFont
 from time import sleep
 import RPi.GPIO as GPIO
 
+
 # Check EPD_SIZE is defined
 EPD_SIZE=0.0
 if os.path.exists('/etc/default/epd-fuse'):
@@ -67,6 +68,7 @@ SIZE = 27
 SW2 = 26
 SW3 = 20
 AC = True
+text.AddText("Welcome. Press the left button to move backwards and the right button to move forwards to begin", Id = "Main")
 
 def checkAC():
     global AC
@@ -306,6 +308,7 @@ def wrap(text):
 
 def main():
     methods1 = [first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth, eleventh]
+    IDs = ["first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth", "eleventh"]
     count = 0
     page = 0
     global SIZE
@@ -332,13 +335,13 @@ def main():
                 page = page+1
             text.Clear()
             count = (count%11)
-            text.AddText(str(methods1[count]()[page]))
+            text.UpdateText("Main", str(methods1[count]()[page]))
             print(methods1[count]())
             #write_text(papirus, methods1[count][page], SIZE)
         else:
             if count == 10:
                 text.Clear()
-                text.AddText(str(methods1[count]()[page]))
+                text.UpdateText("Main", str(methods1[count]()[page]))
         sleep(0.1)
         
 
