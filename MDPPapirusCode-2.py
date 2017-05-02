@@ -6,6 +6,7 @@ import RPi.GPIO as GPIO
 import time
 from urllib import urlopen
 import json
+import math
 
 screen = Papirus()
 text = PapirusTextPos()
