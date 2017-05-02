@@ -153,10 +153,10 @@ def third():
     global waterScore
     textA = ""
     if userMonthGallons > avgMonthGallons:
-        textA = "Over the average water usage by "+ str(math.round(abs((userMonthGallons-avgMonthGallons)/avgMonthGallons)*100,2)) + " percent"
+        textA = "Over the average water usage by "+ str(math.round(math.fabs((userMonthGallons-avgMonthGallons)/avgMonthGallons)*100,2)) + " percent"
         waterScore -= 1
     elif userMonthGallons < avgMonthGallons:
-        textA = "Under the average water usage by " + str(math.round(abs((userMonthGallons-avgMonthGallons)/avgMonthGallons)*100,2)) + " percent"
+        textA = "Under the average water usage by " + str(math.round(math.fabs((userMonthGallons-avgMonthGallons)/avgMonthGallons)*100,2)) + " percent"
         waterScore += 1
     else:
         textA = "Same amount as average water usage"
@@ -175,9 +175,9 @@ def fifth():
     global electricScore
     textA = ""
     if userMonthElectricBtu > lastMonthElectricBtu:
-        textA = "Over last month's electric usage by "+ str(round(abs((lastMonthElectricBtu-userMonthElectricBtu)/lastMonthElectricBtu)*100,2)) + " pecent"
+        textA = "Over last month's electric usage by "+ str(math.round(math.fabs((lastMonthElectricBtu-userMonthElectricBtu)/lastMonthElectricBtu)*100,2)) + " pecent"
     elif userMonthElectricBtu<lastMonthElectricBtu:
-        textA = "Under last month's electric usage by "+ str(round(abs((lastMonthElectricBtu-userMonthElectricBtu)/lastMonthElectricBtu)*100,2)) + " percent"
+        textA = "Under last month's electric usage by "+ str(math.round(math.fabs((lastMonthElectricBtu-userMonthElectricBtu)/lastMonthElectricBtu)*100,2)) + " percent"
         electricScore += 1
     else:
         textA = "Same electricty usage as last month"
@@ -189,10 +189,10 @@ def sixth():
     global electricScore
     textA = ""
     if userMonthElectricBtu > avgMonthEletricBtu:
-        textA = "Over the average electric usage by " + str(round(abs((userMonthElectricBtu-avgMonthEletricBtu)/avgMonthEletricBtu)*100,2)) + " percent"
+        textA = "Over the average electric usage by " + str(math.round(math.fabs((userMonthElectricBtu-avgMonthEletricBtu)/avgMonthEletricBtu)*100,2)) + " percent"
         electricScore -= 1
     elif userMonthElectricBtu < avgMonthEletricBtu:
-        textA = "Under the average electric usage by "+ str(round(abs((userMonthElectricBtu-avgMonthEletricBtu)/avgMonthEletricBtu)*100,2)) + " percent"
+        textA = "Under the average electric usage by "+ str(math.round(math.fabs((userMonthElectricBtu-avgMonthEletricBtu)/avgMonthEletricBtu)*100,2)) + " percent"
         electricScore += 1 
     else:
         textA = "Same electrvity usage as the average"
@@ -210,10 +210,10 @@ def eighth():
     global gasScore
     textA = ""
     if userMonthGasBtu > lastMonthGasBtu:
-        textA = "Over last month's gas usage by " + str(round(abs((lastMonthGasBtu-userMonthGasBtu)/lastMonthGasBtu)*100,2)) + " pecent"
+        textA = "Over last month's gas usage by " + str(math.round(math.fabs((lastMonthGasBtu-userMonthGasBtu)/lastMonthGasBtu)*100,2)) + " pecent"
         gasScore -= 1
     elif userMonthGasBtu<lastMonthGasBtu:
-        textA = "Under last month's gas usage by " + str(round(abs((lastMonthGasBtu-userMonthGasBtu)/lastMonthGasBtu)*100,2)) + " percent"
+        textA = "Under last month's gas usage by " + str(math.round(math.fabs((lastMonthGasBtu-userMonthGasBtu)/lastMonthGasBtu)*100,2)) + " percent"
         gasScore += 1
     else:
         textA = "Same gas usage as last month"
@@ -225,10 +225,10 @@ def ninth():
     global gasScore
     textA = ""
     if userMonthGasBtu > avgMonthGasBtu:
-        textA = "Over the average gas usage by " + str(round(abs((userMonthGasBtu-avgMonthGasBtu)/avgMonthGasBtu)*100,2)) + " percent"
+        textA = "Over the average gas usage by " + str(math.round(math.fabs((userMonthGasBtu-avgMonthGasBtu)/avgMonthGasBtu)*100,2)) + " percent"
         gasScore -= 1
     elif userMonthGasBtu < avgMonthGasBtu:
-        textA = "Under the average gas usage by" + str(round(abs((userMonthGasBtu-avgMonthGasBtu)/avgMonthGasBtu)*100,2)) + "percent"
+        textA = "Under the average gas usage by" + str(math.round(math.fabs((userMonthGasBtu-avgMonthGasBtu)/avgMonthGasBtu)*100,2)) + "percent"
         gasScore += 1
     else:
         textA = "Same amount as average gas usage"
