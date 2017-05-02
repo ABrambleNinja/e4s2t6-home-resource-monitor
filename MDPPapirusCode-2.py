@@ -340,6 +340,7 @@ def main():
             text.AddText(str(methods1[count]()[page]))
         else:
             if count == 10:
+                text.Clear()
                 text.AddText(str(methods1[count]()[page]))
                 sleep(.5)
         sleep(0.1)
