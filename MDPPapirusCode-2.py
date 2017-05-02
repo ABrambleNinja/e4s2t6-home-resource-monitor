@@ -29,8 +29,6 @@ chan_list = [21, 16,26,20]
 GPIO.setup(chan_list, GPIO.IN)
 currentState = True
 
-#!/usr/bin/env python
-
 import os
 import sys
 import string
@@ -321,9 +319,7 @@ def main():
             else:
                 page = page-1
             count = (count%11)
-            text.UpdateText("Main", str(methods1[count]()[page]))
-            #text.AddText(str(methods1[count]()[page]))
-            #write_text(papirus, methods1[count][page], SIZE)
+            text.AddText(str(methods1[count]()[page]))
         elif GPIO.input(SW2) == False:
             if page == len(methods1[count]())-1:
                 page = 0
@@ -331,11 +327,10 @@ def main():
             else:
                 page = page+1
             count = (count%11)
-            text.UpdateText("Main", str(methods1[count]()[page]))
-            #write_text(papirus, methods1[count][page], SIZE)
+            text.AddText(str(methods1[count]()[page]))
         else:
             if count == 10:
-                text.UpdateText("Main", str(methods1[count]()[page]))
+                text.AddText(str(methods1[count]()[page]))
                 sleep(.5)
         sleep(0.1)
         
