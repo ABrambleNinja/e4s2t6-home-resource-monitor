@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from papirus import Papirus
 from papirus import PapirusText
 from papirus import PapirusTextPos
@@ -191,7 +193,7 @@ def sixth():
         electricScore -= 1
     elif userMonthElectricBtu < avgMonthEletricBtu:
         textA = "Under the average electric usage by "+ (str)(round(abs((userMonthElectricBtu-avgMonthEletricBtu)/avgMonthEletricBtu)*100,2)) + " percent"
-        electricScore += 1 
+        electricScore += 1
     else:
         textA = "Same electrvity usage as the average"
     return wrap(textA)
@@ -263,7 +265,7 @@ def genSuggestions(water, electricity, gas):
         displayBuffer += "Youre doing ok on gas... Consider using colder water in showers and to wash dishes." + "\n"
     elif gas < 0:
         displayBuffer += "You could use some improvement on gas usage. Make sure to turn off the stove when youre done cooking! Use colder water in showers and to wash dishes/clothes." + "\n"
-    
+
     return wrap(displayBuffer)
 
 def getWords(text):
@@ -333,7 +335,7 @@ def main():
                 text.AddText(str(methods1[count]()[page]))
                 sleep(.5)
         sleep(0.1)
-        
+
 
 if __name__ == '__main__':
     main()
