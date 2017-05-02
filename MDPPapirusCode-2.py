@@ -336,6 +336,7 @@ def main():
         else:
             if count == 10:
                 text.UpdateText("Main", str(methods1[count]()[page]))
+                sleep(.5)
         sleep(0.1)
         
 
