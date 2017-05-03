@@ -351,7 +351,6 @@ def main():
                     text.Clear()
                     textAC = methods1[count]()
                     text.AddText(textAC)
-                sleep(.5)
         sleep(0.1)
 
 
