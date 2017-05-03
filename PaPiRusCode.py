@@ -198,7 +198,7 @@ def sixth():
         textA = "Over the average electric usage by " + (str)(round(abs((userMonthElectricBtu-avgMonthEletricBtu)/avgMonthEletricBtu)*100,2)) + " percent"
         electricScore -= 1
     elif userMonthElectricBtu < avgMonthEletricBtu:
-        textA = "Under the average electric usage by "+ (str)(round(abs((userMonthElectricBtu-avgMonthEletricBtu)/avgMonthEletricBtu)*100,2)) + " percent"
+        textA = "Under the average electric usage by " + (str)(round(abs((userMonthElectricBtu-avgMonthEletricBtu)/avgMonthEletricBtu)*100,2)) + " percent"
         electricScore += 1
     else:
         textA = "Same electricity usage as the average"
@@ -234,7 +234,7 @@ def ninth():
         textA = "Over the average gas usage by " + (str)(round(abs((userMonthGasBtu-avgMonthGasBtu)/avgMonthGasBtu)*100,2)) + " percent"
         gasScore -= 1
     elif userMonthGasBtu < avgMonthGasBtu:
-        textA = "Under the average gas usage by" + (str)(round(abs((userMonthGasBtu-avgMonthGasBtu)/avgMonthGasBtu)*100,2)) + "percent"
+        textA = "Under the average gas usage by " + (str)(round(abs((userMonthGasBtu-avgMonthGasBtu)/avgMonthGasBtu)*100,2)) + " percent"
         gasScore += 1
     else:
         textA = "Same amount as average gas usage"
@@ -255,21 +255,21 @@ def genSuggestions(water, electricity, gas):
         displayBuffer += "You're doing great on water, keep it up!" + "\n"
     elif water == 0:
         displayBuffer += "You're doing ok on water... Consider taking shorter showers, turning off the faucet when brushing, etc." + "\n"
-    elif water < 0:
+    else:
         displayBuffer += "You could use some improvement on water usage. Make sure to turn off water when you're not using it! Try taking shorter showers and watering the lawn less" + "\n"
 
     if electricity > 0:
         displayBuffer += "You're doing great on electricity, keep it up!" + "\n"
     elif electricity == 0:
        displayBuffer += "You're doing ok on electricity... Consider unplugging chargers when not in use." + "\n"
-    elif electricity < 0:
+    else:
         displayBuffer += "You could use some improvement on electricity usage. Make sure to turn off lights when you don't need them!" + "\n"
 
     if gas > 0:
         displayBuffer += "You're doing great on gas, keep it up!" + "\n"
     elif gas == 0:
         displayBuffer += "You're doing ok on gas... Consider using colder water in showers and to wash dishes." + "\n"
-    elif gas < 0:
+    else:
         displayBuffer += "You could use some improvement on gas usage. Make sure to turn off the stove when youre done cooking! Use colder water in showers and to wash dishes/clothes." + "\n"
 
     return wrap(displayBuffer)
