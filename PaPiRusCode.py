@@ -351,7 +351,7 @@ def main():
                 text.AddText(str(methods1[count]()[page]))
         else:
             if count == 10:
-                if methods1[count] != textAC:
+                if methods1[count]() != textAC:
                     text.Clear()
                     textAC = methods1[count]()
                     text.AddText(textAC)
