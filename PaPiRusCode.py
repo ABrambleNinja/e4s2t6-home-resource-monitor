@@ -329,6 +329,7 @@ def main():
                 page = page-1
             count = (count%11)
             if count == 10:
+                text.Clear()
                 textAC = methods1[count]()
                 text.AddText(textAC)
             else:
@@ -342,6 +343,7 @@ def main():
                 page = page+1
             count = (count%11)
             if count == 10:
+                text.Clear()
                 textAC = methods1[count]()
                 text.AddText(textAC)
             else:
@@ -351,7 +353,8 @@ def main():
             if count == 10:
                 if methods1[count] != textAC:
                     text.Clear()
-                    text.AddText(str(methods1[count]()[page]))
+                    textAC = methods1[count]()
+                    text.AddText(textAC)
                 sleep(.5)
         sleep(0.1)
 
