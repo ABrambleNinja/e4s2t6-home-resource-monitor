@@ -89,9 +89,9 @@ def windowInfoDisplay():
     else:
         if AC:
             if door():
-                textA = "Your AC is on when the window is open. Please close the window. The temperature inside is " + (str)(tempInside()) + " and ouside is " + (str)(currentTempOut) +"."
+                textA = "Your AC is on when the window is open. Please close the window. The temperature inside is " + (str)(tempInside()) + " and outside is " + (str)(currentTempOut) +"."
     if textA == "":
-        textA = "You're monitoring your AC usage well. Keep up the good work! The temperature inside is " + (str)(tempInside()) + " and ouside is " + (str)(currentTempOut) +"."
+        textA = "You're monitoring your AC usage well. Keep up the good work! The temperature inside is " + (str)(tempInside()) + " and outside is " + (str)(currentTempOut) +"."
     return textA
 
 def door():
@@ -315,7 +315,6 @@ def main():
     methods1 = [first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth, eleventh]
     count = 0
     page = 0
-    global SIZE
     papirus = Papirus()
     while True:
         if GPIO.input(SW3) == False:
