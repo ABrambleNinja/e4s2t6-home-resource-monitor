@@ -71,7 +71,7 @@ SIZE = 27
 SW2 = 26
 SW3 = 20
 AC = True
-text.AddText("Welcome. Press the left button to move backwards and the right button to move forwards to begin", Id = "Main")
+text.AddText("Welcome. Press the left or right buttons to cycle between screens.", Id = "Main")
 
 def checkAC():
     global AC
@@ -144,7 +144,7 @@ def second():
     global waterScore
     textA = ""
     if userMonthGallons > lastMonthGallons:
-        textA = "Over last month's water usage by " + (str)(round(abs((lastMonthGallons-userMonthGallons)/lastMonthGallons)*100,2)) + " pecent"
+        textA = "Over last month's water usage by " + (str)(round(abs((lastMonthGallons-userMonthGallons)/lastMonthGallons)*100,2)) + " percent"
         waterScore -= 1
     elif userMonthGallons<lastMonthGallons:
         textA = "Under last month's water usage by " + (str)(round(abs((lastMonthGallons-userMonthGallons)/lastMonthGallons)*100,2)) + " percent"
@@ -181,7 +181,7 @@ def fifth():
     global electricScore
     textA = ""
     if userMonthElectricBtu > lastMonthElectricBtu:
-        textA = "Over last month's electric usage by "+ (str)(round(abs((lastMonthElectricBtu-userMonthElectricBtu)/lastMonthElectricBtu)*100,2)) + " pecent"
+        textA = "Over last month's electric usage by "+ (str)(round(abs((lastMonthElectricBtu-userMonthElectricBtu)/lastMonthElectricBtu)*100,2)) + " percent"
     elif userMonthElectricBtu<lastMonthElectricBtu:
         textA = "Under last month's electric usage by "+ (str)(round(abs((lastMonthElectricBtu-userMonthElectricBtu)/lastMonthElectricBtu)*100,2)) + " percent"
         electricScore += 1
@@ -201,7 +201,7 @@ def sixth():
         textA = "Under the average electric usage by "+ (str)(round(abs((userMonthElectricBtu-avgMonthEletricBtu)/avgMonthEletricBtu)*100,2)) + " percent"
         electricScore += 1
     else:
-        textA = "Same electrvity usage as the average"
+        textA = "Same electricity usage as the average"
     return wrap(textA)
 
 def seventh():
@@ -216,7 +216,7 @@ def eighth():
     global gasScore
     textA = ""
     if userMonthGasBtu > lastMonthGasBtu:
-        textA = "Over last month's gas usage by " + (str)(round(abs((lastMonthGasBtu-userMonthGasBtu)/lastMonthGasBtu)*100,2)) + " pecent"
+        textA = "Over last month's gas usage by " + (str)(round(abs((lastMonthGasBtu-userMonthGasBtu)/lastMonthGasBtu)*100,2)) + " percent"
         gasScore -= 1
     elif userMonthGasBtu<lastMonthGasBtu:
         textA = "Under last month's gas usage by " + (str)(round(abs((lastMonthGasBtu-userMonthGasBtu)/lastMonthGasBtu)*100,2)) + " percent"
@@ -252,23 +252,23 @@ def eleventh():
 def genSuggestions(water, electricity, gas):
     displayBuffer = ""
     if water > 0:
-        displayBuffer += "Youre doing great on water, keep it up!" + "\n"
+        displayBuffer += "You're doing great on water, keep it up!" + "\n"
     elif water == 0:
-        displayBuffer += "Youre doing ok on water... Consider taking shorter showers, turning off the faucet when brushing, etc." + "\n"
+        displayBuffer += "You're doing ok on water... Consider taking shorter showers, turning off the faucet when brushing, etc." + "\n"
     elif water < 0:
-        displayBuffer += "You could use some improvement on water on usage. Make sure to turn off water when youre not using it! Try shorter showers might and reducing time on watering the lawn." + "\n"
+        displayBuffer += "You could use some improvement on water usage. Make sure to turn off water when you're not using it! Try taking shorter showers and watering the lawn less" + "\n"
 
     if electricity > 0:
-        displayBuffer += "Youre doing great on electricity, keep it up!" + "\n"
+        displayBuffer += "You're doing great on electricity, keep it up!" + "\n"
     elif electricity == 0:
-       displayBuffer += "Youre doing ok on electricity... Consider unplugging chargers when not in use." + "\n"
+       displayBuffer += "You're doing ok on electricity... Consider unplugging chargers when not in use." + "\n"
     elif electricity < 0:
-        displayBuffer += "You could use some improvement on electricity usage. Make sure to turn off lights when you dont need them!" + "\n"
+        displayBuffer += "You could use some improvement on electricity usage. Make sure to turn off lights when you don't need them!" + "\n"
 
     if gas > 0:
-        displayBuffer += "Youre doing great on gas, keep it up!" + "\n"
+        displayBuffer += "You're doing great on gas, keep it up!" + "\n"
     elif gas == 0:
-        displayBuffer += "Youre doing ok on gas... Consider using colder water in showers and to wash dishes." + "\n"
+        displayBuffer += "You're doing ok on gas... Consider using colder water in showers and to wash dishes." + "\n"
     elif gas < 0:
         displayBuffer += "You could use some improvement on gas usage. Make sure to turn off the stove when youre done cooking! Use colder water in showers and to wash dishes/clothes." + "\n"
 
