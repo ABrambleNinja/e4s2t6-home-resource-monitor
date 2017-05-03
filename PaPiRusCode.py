@@ -92,7 +92,7 @@ def windowInfoDisplay():
                 textA = "Your AC is on when the window is open. Please close the window. The temperature inside is " + (str)(tempInside()) + " and ouside is " + (str)(currentTempOut) +"."
     if textA == "":
         textA = "You're monitoring your AC usage well. Keep up the good work! The temperature inside is " + (str)(tempInside()) + " and ouside is " + (str)(currentTempOut) +"."
-    return wrap(textA)
+    return textA
 
 def door():
     # pin is 21
@@ -311,6 +311,7 @@ def wrap(text):
     return pages
 
 def main():
+    textAC = ""
     methods1 = [first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth, eleventh]
     IDs = ["first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth", "eleventh"]
     count = 0
@@ -327,8 +328,12 @@ def main():
             else:
                 page = page-1
             count = (count%11)
-            text.Clear()
-            text.AddText(str(methods1[count]()[page]))
+            if count == 10:
+                textAC = methods1[count]()
+                text.AddText(textAC)
+            else:
+                text.Clear()
+                text.AddText(str(methods1[count]()[page]))
         elif GPIO.input(SW2) == False:
             if page == len(methods1[count]())-1:
                 page = 0
@@ -336,12 +341,17 @@ def main():
             else:
                 page = page+1
             count = (count%11)
-            text.Clear()
-            text.AddText(str(methods1[count]()[page]))
-        else:
             if count == 10:
+                textAC = methods1[count]()
+                text.AddText(textAC)
+            else:
                 text.Clear()
                 text.AddText(str(methods1[count]()[page]))
+        else:
+            if count == 10:
+                if methods1[count] != textAC:
+                    text.Clear()
+                    text.AddText(str(methods1[count]()[page]))
                 sleep(.5)
         sleep(0.1)
 
