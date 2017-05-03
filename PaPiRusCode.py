@@ -313,14 +313,10 @@ def wrap(text):
 def main():
     textAC = ""
     methods1 = [first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth, eleventh]
-    IDs = ["first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth", "eleventh"]
     count = 0
     page = 0
     global SIZE
     papirus = Papirus()
-    # Use smaller font for smaller dislays
-    if papirus.height <= 96:
-        SIZE = 18
     while True:
         if GPIO.input(SW3) == False:
             if page ==0:
